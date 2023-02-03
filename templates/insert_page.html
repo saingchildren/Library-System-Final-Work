@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}
+<title>新增書籍</title>
+{% endblock %}
+{% block content %}
+<br>
+<h2 style="text-align: center;">新增書籍</h2>
+<div class="row justify-content-center">
+    <div class="col-auto">        
+        <form method="POST" enctype=multipart/form-data>
+            請輸入書名：<input class="form-control" type="text" name="book_name">
+            <br>
+            請輸入書籍類別：<input class="form-control" type="text" name="category">
+            <br>
+            請輸入作者：<input class="form-control" type="text" name="author">
+            <br>
+            請輸入出版社：<input class="form-control" type="text" name="publisher">
+            <br>
+            請輸入ISBN：<input class="form-control" type="text" name="ISBN">
+            <br>
+            請輸入簡介：<input class="form-control" type="text" name="info">
+            <br>
+            請選擇圖片：<input class="form-control" type="file" name="picture">
+            <br>
+            <input class="btn btn-primary" type="submit" name="send" value="送出">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

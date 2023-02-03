@@ -1,0 +1,52 @@
+*{
+    padding: 0;
+    margin: 0;
+    List-style:none
+}
+.wrap
+{
+    background: linear-gradient(90deg,#FFFFFF,#BEBEBE,#8E8E8E);
+}
+.banner
+{
+    width: 100%;
+   height: 100vh;
+    
+}
+.banner-txt
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 50px;
+    padding-top: 50px;
+}
+
+.container-3
+{
+    display: flex;
+}
+.container-3 .row .col-2 .row
+{
+    width: 100%;
+    margin: 0 15px;
+    background-color:rgb(201, 196, 196);
+    border-radius: 20px;
+}
+.container-3 .row .col-2 .row .item
+{
+    display: flex;
+}
+.container-3 .row .col-2 .row .item .pic
+{
+    border-radius: 20px;
+}
+
+.container-3 .row .col-2 .row .item .txt
+{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}

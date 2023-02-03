@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+<title>管理頁面</title>
+{% endblock %}
+{% block content %}
+{%if (users) %}
+{% set a = ["student_number", "student_name", "password", "payment", "book_count", "email", "level"]%}
+<br>
+    <h2 style="text-align: center;">管理帳戶</h2>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <table class="table table-hover bg-light table-bordered align-middle">
+                <tr class="table-dark">
+                    <th>學號</th>
+                    <th>姓名</th>
+                    <th>密碼</th>
+                    <th>罰款</th>
+                    <th>借閱數量</th>
+                    <th>電子郵件</th>
+                    <th>權限</th>
+                    <th colspan="2">狀態修改及查詢</th>
+                </tr>
+                {% for i in users: %}
+                <tr>
+                    {% for j in a: %}
+                    <td>{{i[j]}}</td>
+                    {% endfor %}
+                    <td><a href="manage_user?change={{i['student_number']}}">修改</a></td>
+                    <td><a href="/user_out_book/{{i['student_number']}}">查看</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endif %}
+{% endblock %}

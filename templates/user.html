@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}
+<title>使用者介面</title>
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="row justify-content-center">
+    <div class="col-8">
+        <h2>使用者資料</h2>
+        <hr>
+        學號：{{session["student_number"]}}
+        <br>
+        姓名：{{session["student_name"]}}
+        <br>
+        密碼：{{session["password"]}}
+        <br>
+        您應繳納的罰金為：{{session["payment"]}}
+        <br>
+        您目前借閱的書籍數量為：{{session["book_count"]}}
+        <br>
+        您的電子郵件為：{{session["email"]}}
+        <br>
+        <p><a href="manage_user?change={{session['student_number']}}">修改個人資料</a></p>
+        <hr>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-8">      
+        <h2>您未歸還的書籍有</h2>
+        {% if (user_book.count() != 0): %}
+        <table class="table table-hover bg-light table-bordered align-middle">
+            <tr class="table-dark">
+                <td>書籍編號</td>
+                <td>書名</td>
+                <td>租借日</td>
+                <td>到期日</td>
+                <td colspan="2">續借或歸還</td>
+            </tr>
+            <tr>
+                {% for i in user_book: %}
+                {% for j in i%}
+                {% if (j == "student_number") %}
+                {% continue %}
+                {% elif (j == "renew" and i[j] == 0)%}
+                <td><a href="/user?renew={{i['book_number']}}">續借</a></td>
+                {% elif (j == "renew" and i[j] == 1)%}
+                {% continue %}
+                {% elif (j == "come")%}
+                {% continue%}
+                {% else %}
+                <td>{{i[j]}}</td>
+                {% endif %}
+                {% endfor %}
+                <td><a href="/user?return={{i['book_number']}}">歸還</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>無</p>
+        {% endif %}
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-8">
+        <h2>您預約的書籍有</h2>
+        {%if (booking.count() != 0) :%}
+        {% set b = ["book_number", "book_name", "author", "publisher", "ISBN"] %}
+        <table class="table table-hover bg-light table-bordered align-middle">
+            <tr class="table-dark">
+                <td>書籍編號</td>
+                <td>書名</td>
+                <td>作者</td>
+                <td>出版社</td>
+                <td>ISBN</td>
+                <td>取消預約</td>
+            </tr>
+            {% for i in booking :%}
+            <tr>
+                {% for j in b :%}
+            <td>{{i[j]}}</td>
+                {% endfor %}
+                <td><a href="/user?cancel={{i['book_number']}}">取消預約</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p>您沒有預約的書籍</p>
+        {% endif %}
+    </div>
+</div>
+
+    
+
+{% endblock %}

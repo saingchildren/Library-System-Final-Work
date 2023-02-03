@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}
+<title>查詢結果</title>
+{% endblock %}
+
+{% block content %}
+<table border=1>
+{% for i in range(session["first_result"]|length) %}
+<tr>
+{% for j in range(session["first_result"][i]|length) %}
+{% if(j == 0) %}
+<td><img src="{{session['first_result'][i][j]}}.jpg"></td>
+{% elif (j == 1) %}
+<td><a href="detail/{{session['first_result'][i][j]}}">{{session['first_result'][i][j]}}</a></td>
+{% elif (j == 4) %}
+{% continue %}
+{% else %}
+<td>{{session["first_result"][i][j]}}</td>
+{% endif %}
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

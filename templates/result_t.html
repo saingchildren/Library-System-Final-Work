@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>搜尋結果</title>
+<link rel="stylesheet" type="text/css" href="result.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+{% endblock %}
+{% block content%}
+<div class="row justify-content-center">
+    <div class="col-10">
+        <br><h2 style="text-align: center;">查詢結果</h2><br>
+        <table class="table table-hover bg-light table-bordered align-middle">
+            <thead>
+                <tr class="table-dark">
+                    <th scope="col">圖片</th>
+                    <th scope="col">書名</th>
+                    <th scope="col">出版社</th>
+                    <th scope="col">作者</th>
+                    <th scope="col">庫存</th>
+                    <th scope="col">已借閱</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in range(session["first_result"]|length) %}
+                <tr>
+                {% for j in range(session["first_result"][i]|length) %}
+                {% if(j == 0) %}
+                <td><img src="{{session['first_result'][i][j]}}.jpg"></td>
+                {% elif (j == 1) %}
+                <td><a class="link-danger" style="text-decoration:none;" href="detail/{{session['first_result'][i][j]}}">{{session['first_result'][i][j]}}</a></td>
+                {% elif (j == 4) %}
+                {% continue %}
+                {% else %}
+                <td>{{session["first_result"][i][j]}}</td>
+                {% endif %}
+                {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+{{session["first_result"]}}
+{% endblock %}
+</body>

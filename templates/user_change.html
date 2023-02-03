@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}
+<title>新增書籍</title>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center" >
+    <div class="col-auto">
+        <br>
+        <h2>更改資料</h2>
+        {% set a = {"student_name":"姓名", "password":"密碼", "email":"電子郵件"}%}
+        <form action="/manage_user" method="POST">
+        {% for i in user: %}
+        {% for j in i: %}
+        {% if (j != "student_number")%}
+        {{a[j]}}：<input type="text" style="text-align: center;" class="form-control" name={{j}} placeholder={{i[j]}}>
+        <br>
+        {% endif %}
+        {% endfor %}
+        
+        <input class="btn btn-primary" type="submit" name={{i.student_number}} value="送出">
+        {% endfor %}
+        </form>
+    </div>
+</div>
+{% endblock %}

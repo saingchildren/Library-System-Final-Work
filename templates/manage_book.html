@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+<title>管理頁面</title>
+{% endblock %}
+{% block div%}
+<a href="insert_page">新增書籍</a>
+{% endblock %}
+{% block content %}
+<br>
+<h2 style="text-align: center;">管理書籍</h2>
+<div class="row justify-content-center">
+    <div class="col-auto">
+        
+        {% if (books) %}
+        {% set b = ["book_number", "book_name", "author", "publisher", "ISBN", "check_in_date", "status", "booking"] %}
+        {% set title = ["書籍編號", "書籍名稱", "作者", "出版社", "ISBN", "入館日期", "借閱狀態", "預約狀態", "刪除", "好書推薦", "懷舊好書"] %}
+        <table class="table table-hover bg-light table-bordered align-middle">
+            
+            <tr class="table-dark">
+                {% for i in title: %}
+                <td>{{i}}</td>
+                {% endfor %}
+            </tr>
+            {% for i in books: %}
+            <tr>
+                {% for j in b: %}
+                <td>{{i[j]}}</td>
+                {% endfor %}
+                <td><a href="/manage_book?delete={{i['book_number']}}">刪除</a></td>
+                <td><a href="">新增</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

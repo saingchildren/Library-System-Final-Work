@@ -1,0 +1,32 @@
+*{
+    padding: 0;
+    margin: 0;
+    List-style:none
+}
+.wrap
+{
+    background: linear-gradient(90deg,#FFFFFF,#BEBEBE,#8E8E8E);
+    height: 840px;
+}
+.banner-txt
+{
+
+    padding-left: 50px;
+    padding-top: 50px;
+}
+
+.item
+{
+    display: flex;
+}
+.item .txt
+{
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.item .txt .bookcontent
+{
+    margin-top: 30px;
+}

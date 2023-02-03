@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}
+<title>館藏查詢</title>
+{% endblock %}
+
+{% block content %}
+<form method="POST", action="result">
+    搜尋：<input type=text name=search>
+    <br>
+    <input type="submit" value="確定">
+</form>
+{% endblock %}

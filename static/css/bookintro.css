@@ -1,0 +1,15 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+.wrap
+{
+    background: linear-gradient(-45deg, #5F5F5F,#BEBEBE,#9E9E9E);
+}
+.banner
+{
+    width: 100%;
+
+}
+

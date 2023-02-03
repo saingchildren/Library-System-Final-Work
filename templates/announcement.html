@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}
+<title>管理公告</title>
+{% endblock %}
+{% block content %}
+<br>
+<h2 style="text-align: center;">管理公告</h2>
+<div class="row justify-content-center">
+    <div class="col-6">
+        <table class="table table-hover bg-light table-bordered align-middle">
+            <tr class="table-dark">
+                <td>公布日期</td>
+                <td>標題</td>
+                <td>刪除</td>
+            </tr>
+            {% for i in session["announce"]: %}
+            <tr>
+                <td>{{i['update_date']}}</td>
+                <td><a href="/view_announce/{{i['title']}}">{{i['title']}}</a></td>
+                <td><a href="announcement?delete={{i['title']}}">刪除</a></td>
+            </tr>
+            {% endfor %}
+            </table>
+    </div>
+</div>
+
+{% endblock %}

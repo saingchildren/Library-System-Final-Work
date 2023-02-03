@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+    List-style:none
+}
+.wrap
+{
+    background: linear-gradient(-45deg, #5F5F5F,#BEBEBE,#9E9E9E);
+}
+.banner
+{
+    width: 100%;
+    height: 100vh;
+    
+}
+.container
+{
+    height: 100%;
+    margin: auto;
+    display: flex;
+}
+.banner-txt
+{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.banner-txt h1
+{
+    font-size: 80px;	
+}
+.banner-txt h1 small
+{
+    font-size: 60px;
+}
+.form
+{
+    height: 100%;
+    padding-left: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: flex-end;
+    padding-top :80px;
+}

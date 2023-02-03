@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}
+<title>{{book}}</title>
+{% endblock %}
+
+{% block content %}
+<div>
+    <img src="/static/{{session['result'][0][0][:5]}}.jpg">
+    <p style="width:700px;height:30px;">{{session["result"][0][6]}}</p> <!--簡介資訊-->
+</div>
+<br>
+<table border=1>
+<tr>
+    <td>書籍編號</td>
+    <td>書名</td>
+    <td>出版社</td>
+    <td>作者</td>
+    <td>借閱狀態</td>
+    <td>預約狀態</td>
+</tr>
+{% for i in range(session["result"]|length)%}
+<tr>
+{% for j in range(session["result"][i]|length) %}
+{% if (j == 4 and session["result"][i][j] == "未借出" and session["result"][i][5] == "可預約")%}
+<td><a href="/detail/{{session['result'][i][1]}}?borrow={{session['result'][i][0]}}">借閱</a></td>
+{% elif (j == 4 and session["result"][i][j] == "已借出" and session["result"][i][5] == "已被預約")%}
+<td>無法借閱</td>
+{% elif (j == 5 and session["result"][i][j] == "可預約")%}
+<td><a href="/detail/{{session['result'][i][1]}}?booking={{session['result'][i][0]}}">可預約</a></td>
+{% elif (j == 6) %}
+{% continue %}
+{% else %}
+<td>{{session["result"][i][j]}}</td>
+{% endif %}
+{% endfor%}
+</tr>
+{% endfor%}
+</table>
+{{session["result"]}}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+<title>管理頁面</title>
+{% endblock %}
+{% block content %}
+<br>
+<h2 style="text-align: center;">使用者:&nbsp{{student_book[0]["student_number"]}}&nbsp目前借閱的書籍</h2>
+{% set array = ['book_number', 'book_name', 'out_date', 'come_date']%}
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <table class="table table-hover bg-light table-bordered align-middle">
+            <tr class="table-dark">
+                <td>書籍編號</td>
+                <td>書籍名稱</td>
+                <td>借出日期</td>
+                <td>應歸還日期</td>
+            </tr>
+            {% for i in student_book: %}
+            <tr>
+            {% for j in array: %}
+            <td>{{i[j]}}</td>
+            {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}
